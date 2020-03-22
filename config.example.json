@@ -1,0 +1,5 @@
+{
+  "token": "insert-bot-token-here",
+  "prefix": "The prefix you want to use",
+  "welcomeChannelID": "The ChannelID for the welcome messages"
+}

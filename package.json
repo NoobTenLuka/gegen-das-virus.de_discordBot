@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KrisenKulturDE/gegen-das-virus.de_discordBot.git"
+    "url": "git+https://github.com/NoobTenLuka/gegen-das-virus.de_discordBot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KrisenKulturDE/gegen-das-virus.de_discordBot/issues"
+    "url": "https://github.com/NoobtenLuka/gegen-das-virus.de_discordBot/issues"
   },
-  "homepage": "https://github.com/KrisenKulturDE/gegen-das-virus.de_discordBot#readme",
+  "homepage": "https://github.com/NoobtenLuka/gegen-das-virus.de_discordBot#readme",
   "dependencies": {
     "discord.js": "^12.0.2"
   }
