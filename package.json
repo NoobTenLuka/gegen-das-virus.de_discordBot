@@ -4,7 +4,8 @@
   "description": "A little, friendly Robot vs the Virus",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/NoobtenLuka/gegen-das-virus.de_discordBot#readme",
   "dependencies": {
-    "discord.js": "^12.0.2"
+    "discord.js": "^12.0.2",
+    "enmap": "^5.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
