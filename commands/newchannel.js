@@ -1,18 +1,22 @@
 exports.run = (client, message, args) => {
-  const [catergoryName, channelName] = args;
+  const [categoryName, channelName] = args;
   const reason = args[2] ? args.slice(2).join(" ") : null;
 
-  const category = message.guild.channels.cache.find(
-    c => c.name === catergoryName && c.type === "category"
-  );
-
+  let category;
+  if (categoryName === "here") {
+    category = message.channel.parent;
+  } else {
+    category = message.guild.channels.cache.find(
+      c => c.name === categoryName && c.type === "category"
+    );
+  }
   // Check if the category exists
   if (!category) {
-    const lowercaseCategory = catergoryName.toLowerCase();
+    const lowercaseCategory = category.name.toLowerCase();
     const firstLetterUppercase =
       lowercaseCategory.charAt(0).toUpperCase() + lowercaseCategory.slice(1);
     return message.reply(
-      `I can't find ${catergoryName}. Did you mean ${firstLetterUppercase}`
+      `I can't find ${category.name}. Did you mean ${firstLetterUppercase}`
     );
   }
 
@@ -28,7 +32,7 @@ exports.run = (client, message, args) => {
     );
   }
 
-  const newChannelName = `${catergoryName}-${channelName}`;
+  const newChannelName = `${category.name}-${channelName}`;
 
   message.guild.channels
     .create(newChannelName, {
@@ -44,11 +48,12 @@ exports.run = (client, message, args) => {
         console.error(err);
       }
 
-      if (!channel.parent) {
-        channel.delete();
-        return message.reply(
-          "There has been an error in the creation of the channel. Please try again!"
-        );
+      while (!channel.parent) {
+        try {
+          await channel.setParent(category.id);
+        } catch (err) {
+          console.error(err);
+        }
       }
 
       try {
