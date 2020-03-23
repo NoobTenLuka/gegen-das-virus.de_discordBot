@@ -12,7 +12,7 @@ module.exports = (client, member) => {
     );
     member.send({ embed: { color: 3447003, fields: languageJSON.welcome } });
     client.welcomeChannel.send(
-      "Ein neuer Benutzer hat den Discord betreten: " + member.displayName
+      `Ein neuer Benutzer hat den Discord betreten: <@${member.id}>`
     );
   } catch (e) {
     console.error(e);
