@@ -15,14 +15,18 @@ exports.run = (client, message, args) => {
       `I can't find ${catergoryName}. Did you mean ${firstLetterUppercase}`
     );
   }
-  const canCreateChannel = category
-    .permissionsFor(message.member)
-    .has("SEND_MESSAGES");
 
-  if (!canCreateChannel)
+  const canCreateChannel =
+    category.permissionsFor(message.member).has("SEND_MESSAGES") &&
+    message.member.roles.cache.some(
+      role => role.name === client.config.channelCreationRoleName
+    );
+
+  if (!canCreateChannel) {
     return message.reply(
       "you currently do not have the necessary permissions to create this channel"
     );
+  }
 
   const newChannelName = `${catergoryName}-${channelName}`;
 
@@ -36,6 +40,18 @@ exports.run = (client, message, args) => {
     .then(async channel => {
       try {
         await channel.setParent(category.id);
+      } catch (err) {
+        console.error(err);
+      }
+
+      if (!channel.parent) {
+        channel.delete();
+        return message.reply(
+          "There has been an error in the creation of the channel. Please try again!"
+        );
+      }
+
+      try {
         await channel.lockPermissions();
       } catch (err) {
         console.error(err);
