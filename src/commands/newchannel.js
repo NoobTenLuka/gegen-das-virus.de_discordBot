@@ -2,22 +2,23 @@ exports.run = (client, message, args) => {
   const [categoryName, channelName] = args
   const reason = args[2] ? args.slice(2).join(' ') : null
 
+  // Change the input to match the category name standarts
+  const lowercaseCategory = categoryName.toLowerCase()
+  const formatedCategoryName =
+    lowercaseCategory.charAt(0).toUpperCase() + lowercaseCategory.slice(1)
+
   let category
   if (categoryName === 'here') {
     category = message.channel.parent
   } else {
     category = message.guild.channels.cache.find(
-      (c) => c.name === categoryName && c.type === 'category',
+      (c) => c.name === formatedCategoryName && c.type === 'category',
     )
   }
+
   // Check if the category exists
   if (!category) {
-    const lowercaseCategory = category.name.toLowerCase()
-    const firstLetterUppercase =
-      lowercaseCategory.charAt(0).toUpperCase() + lowercaseCategory.slice(1)
-    return message.reply(
-      `I can't find ${category.name}. Did you mean ${firstLetterUppercase}`,
-    )
+    return message.reply(`The category ${formatedCategoryName} was not found`)
   }
 
   const canCreateChannel =
