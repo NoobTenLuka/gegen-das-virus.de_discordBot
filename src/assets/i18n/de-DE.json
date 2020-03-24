@@ -1,8 +1,8 @@
 {
-    "welcome": [
-        {
-            "name": "Willkommen",
-            "value": "Herzlich willkommen auf dem Discord Server von 'gegen-das-virus.de'.\nBitte schreibe in den Channel 'stellt_euch_vor' einen kurzen Steckbrief über dich selbst.\nWir werden dich später zu einem persönlichen Gespräch in den Channel 'onboarding' holen.\n\nMit freundlichen Grüßen\nDer Roboter Gegen das Virus"
-        }
-    ]
+  "welcome": [
+    {
+      "name": "Willkommen",
+      "value": "Herzlich willkommen auf dem Discord Server von 'gegen-das-virus.de'.\nBitte schreibe in den Channel 'stellt_euch_vor' einen kurzen Steckbrief über dich selbst.\nWir werden dich später zu einem persönlichen Gespräch in den Channel 'onboarding' holen.\n\nMit freundlichen Grüßen\nDer Roboter Gegen das Virus"
+    }
+  ]
 }
